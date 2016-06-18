@@ -17,6 +17,7 @@ import {
 class timer extends Component {
   render() {
       return (
+      <Image source={icons.background} style={styles.bgImage}>
         <View style={styles.container}>
           <View style={styles.timerDisplayLayout}>
             <View style={styles.timerCircle}>
@@ -34,6 +35,7 @@ class timer extends Component {
             <Image source={icons.start} style={styles.startIcon} />
           </View>
         </View>
+      </Image>
       );
     }
 }
@@ -42,6 +44,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'stretch',
+  },
+
+  bgImage: {
+    flex: 1,
+    width: null,
+    height: null,
   },
 
   timerCircle: {
