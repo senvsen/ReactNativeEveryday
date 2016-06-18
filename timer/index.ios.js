@@ -5,10 +5,12 @@
  */
 
 import React, { Component } from 'react';
+import { icons } from './theme';
 import {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   View
 } from 'react-native';
 
@@ -29,6 +31,7 @@ class timer extends Component {
           </View>
 
           <View style={styles.controlsLayout}>
+            <Image source={icons.start} style={styles.startIcon} />
           </View>
         </View>
       );
@@ -64,6 +67,10 @@ const styles = StyleSheet.create({
     marginLeft: 1
   },
 
+  startIcon: {
+    tintColor: '#fff'
+  },
+
   // flexDirection set default to column.
   timerDisplayLayout: {
     flex: 5,
@@ -73,7 +80,9 @@ const styles = StyleSheet.create({
   },
 
   controlsLayout: {
-    flex: 1.5,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'rgba(0,255,0,0.3)',
   },
 });
