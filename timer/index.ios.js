@@ -6,15 +6,27 @@
 
 import React, { Component } from 'react';
 import { icons } from './theme';
+import { Timer } from './Timer';
 import {
   AppRegistry,
   StyleSheet,
   Text,
   Image,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
 
 class timer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isStart: false,
+      minutes: '00',
+      seconds: '00',
+      hundredth: '00'
+    };
+  };
+
   render() {
       return (
       <Image source={icons.background} style={styles.bgImage}>
@@ -22,22 +34,43 @@ class timer extends Component {
           <View style={styles.timerDisplayLayout}>
             <View style={styles.timerCircle}>
               <Text style={styles.mainLabel}>
-                00:00
+                {this.state.minutes}:{this.state.seconds}
               </Text>
-
               <Text style={styles.subLabel}>
-                00
+                {this.state.hundredth}
               </Text>
             </View>
           </View>
 
-          <View style={styles.controlsLayout}>
+          <TouchableOpacity style={styles.controlsLayout} onPress={this.onPress.bind(this)}>
             <Image source={icons.start} style={styles.startIcon} />
-          </View>
+          </TouchableOpacity>
         </View>
       </Image>
       );
-    }
+    };
+
+    onPress(event){
+      if(this.state.isStart == false){
+
+      }
+      this.setState({
+        minutes: '34',
+        seconds: '10',
+        hundredth: '02'
+      })
+    };
+
+}
+
+function zeroPadding(n) {
+  if (n == 0) {
+    return "00";
+  } else if(n < 10) {
+    return "0" + n;
+  } else {
+    return n;
+  }
 }
 
 const styles = StyleSheet.create({
