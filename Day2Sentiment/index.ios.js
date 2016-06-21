@@ -24,7 +24,7 @@ class Day2Sentiment extends Component {
       searchText: '',
       sentiment: '',
       gif: 'http://ww1.sinaimg.cn/large/72f96cbagw1f52lv09lzgj211o0vstda',
-      notice: ''
+      notice: 'No sentence typed in so far~'
     };
   };
 
@@ -61,7 +61,8 @@ class Day2Sentiment extends Component {
     .then(function(imgresponseJSON){
       console.log(imgresponseJSON.data.image_url);
       _this.setState({
-        gif: imgresponseJSON.data.image_url
+        gif: imgresponseJSON.data.image_url,
+        notice: 'Touch the gif to see more ^_^'
       });
     })
   };
@@ -70,6 +71,11 @@ class Day2Sentiment extends Component {
     if(this.state.isStart == true){
       var searchText = this.state.sentiment[0].split("/")[0];
       this.handleGifFetch(searchText, this);
+    }
+    else{
+      this.setState({
+        notice: 'No sentence typed in so far~'
+      })
     }
   };
 
@@ -95,6 +101,11 @@ class Day2Sentiment extends Component {
              </View>
            </View>
            {content}
+           <View style={styles.notice}>
+              <Text style={styles.noticeText}>
+                {this.state.notice}
+              </Text>
+           </View>
          </View>
          <TouchableOpacity style={styles.mainGif} onPress={this.onPress.bind(this)}>
            <Image style={[styles.mainGif, {
@@ -102,7 +113,6 @@ class Day2Sentiment extends Component {
            }]} source={{uri: this.state.gif}}>
            </Image>
          </TouchableOpacity>
-
       </View>
     );
   }
@@ -129,10 +139,18 @@ const styles = StyleSheet.create({
     height: null
   },
   row: {
-    flex: 1,
+    flex: 2,
     flexWrap: 'nowrap',
     justifyContent: 'center',
     paddingTop: 50
+  },
+  notice: {
+    flex: 1,
+    marginBottom: -40
+  },
+  noticeText: {
+    flex: 1,
+    color: '#FFFFFF'
   },
   sentiContainer: {
     flex: 1,
