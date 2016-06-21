@@ -10,23 +10,24 @@ import {
 class Forecast extends Component {
   render() {
     return (
-      <View>
-        <Text style={styles.bigText}>
-          {this.props.main}
-        </Text>
-        <Text style={styles.mainText}>
-          Current conditions: {this.props.description}
-        </Text>
-        <Text style={styles.bigText}>
-          {this.props.temp}°F
-        </Text>
-      </View>
+      <Image style={styles.bgImage}>
+        <View>
+          <Text style={styles.preText}>
+            {this.props.mainText}
+          </Text>
+        </View>
+      </Image>
     );
   }
 };
 
 var styles = StyleSheet.create({
-  bigText: {
+  bgImage: {
+    flex: 1,
+    width: null,
+    height: null
+  },
+  preText: {
     flex: 2,
     fontSize: 20,
     textAlign: 'center',
