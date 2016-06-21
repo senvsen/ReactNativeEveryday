@@ -15,7 +15,6 @@ import {
   Image
 } from 'react-native';
 const Forecast = require('./Forecast');
-
 class Day2Sentiment extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +68,7 @@ class Day2Sentiment extends Component {
              </Text>
              <View style={styles.sentiContainer}>
                <TextInput
-                 style={[styles.zipCode, styles.mainText]}
+                 style={styles.mainText}
                 //  onSubmitEditing={this.handleTextChange.bind(this)}
                  onChangeText={this.handleTextChange.bind(this)}
                  />
@@ -110,19 +109,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexWrap: 'nowrap',
     justifyContent: 'center',
-    paddingTop: 40
+    paddingTop: 50
   },
   sentiContainer: {
     flex: 1,
     borderBottomColor: '#DDDDDD',
     borderBottomWidth: 1,
   },
-  zipCode: {
-    width: 50,
-    height: baseFontSize,
-  },
   mainText: {
     flex: 1,
+    height: baseFontSize,
     fontSize: baseFontSize,
     color: '#FFFFFF'
   }

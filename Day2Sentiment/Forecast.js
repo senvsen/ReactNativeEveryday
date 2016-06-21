@@ -10,19 +10,17 @@ import {
 class Forecast extends Component {
   render() {
     return (
-      <Image style={styles.bgImage}>
-        <View>
-          <Text style={styles.preText}>
-            {this.props.mainText}
-          </Text>
-        </View>
-      </Image>
+      <View style={styles.content}>
+        <Text style={styles.preText}>
+          {this.props.mainText}
+        </Text>
+      </View>
     );
   }
 };
 
 var styles = StyleSheet.create({
-  bgImage: {
+  content: {
     flex: 1,
     width: null,
     height: null
@@ -31,7 +29,7 @@ var styles = StyleSheet.create({
     flex: 2,
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    marginTop: 10,
     color: '#FFFFFF'
   },
   mainText: {
