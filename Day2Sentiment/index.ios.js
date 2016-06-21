@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  Dimensions,
   StyleSheet,
   Text,
   View,
@@ -21,12 +22,12 @@ class Day2Sentiment extends Component {
     this.state = {
       searchText: '',
       sentiment: '',
-      gif: require('./luffy.jpg')
+      gif: 'http://ww1.sinaimg.cn/large/72f96cbagw1f52lv09lzgj211o0vstda'
     };
   };
 
-  handleTextChange(event) {
-    var searchText = event.nativeEvent.text;
+  handleTextChange(text) {
+    var searchText = text;
     var _this = this;
     this.setState({searchText: searchText});
     fetch('http://www.airloft.org/api/getSentimentTextMulti?text='
@@ -54,6 +55,7 @@ class Day2Sentiment extends Component {
   };
 
   render() {
+    var {height, width} = Dimensions.get('window');
     var content = null;
     if (this.state.sentiment !== null) {
       content = <Forecast mainText={this.state.sentiment} />;
@@ -68,13 +70,16 @@ class Day2Sentiment extends Component {
              <View style={styles.sentiContainer}>
                <TextInput
                  style={[styles.zipCode, styles.mainText]}
-                 onSubmitEditing={this.handleTextChange.bind(this)}
+                //  onSubmitEditing={this.handleTextChange.bind(this)}
+                 onChangeText={this.handleTextChange.bind(this)}
                  />
              </View>
            </View>
            {content}
          </View>
-         <Image style={styles.mainGif} source={this.state.gif}>
+         <Image style={[styles.mainGif, {
+           width: width
+         }]} source={{uri: this.state.gif}}>
          </Image>
       </View>
     );
@@ -98,9 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   mainGif: {
-    flex: 6,
-    backgroundColor: '#343434',
-    width: null,
+    flex: 5,
     height: null
   },
   row: {
