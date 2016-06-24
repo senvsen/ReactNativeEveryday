@@ -31,8 +31,8 @@
    * on the same Wi-Fi network.
    */
 
-  // change IP address to either localhost or IP to test locally or on mobile phone. 
-  jsCodeLocation = [NSURL URLWithString:@"http://192.168.0.12:8081/index.ios.bundle?platform=ios&dev=true"];
+  // change IP address to either localhost or IP to test locally or on mobile phone.
+  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
 
   /**
    * OPTION 2

@@ -52,7 +52,7 @@ class Day2Sentiment extends Component {
   };
 
   /**
-   * _this: points to current component.
+   * _this: points to current component(Day2Sentiment).
    */
   handleGifFetch(text, _this){
     var url = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + text;
