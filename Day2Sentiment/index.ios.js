@@ -24,32 +24,54 @@ class Day2Sentiment extends Component {
       searchText: '',
       sentiment: '',
       gif: 'http://ww1.sinaimg.cn/large/72f96cbagw1f52lv09lzgj211o0vstda',
-      notice: 'No sentence typed in so far~'
+      notice: 'No sentence typed in so far~',
+      emojis: ''
     };
   };
 
   handleTextChange(text) {
     var searchText = text;
-    var _this = this;
-    this.setState({
-      isStart: true,
-      searchText: searchText
-    });
-    fetch('http://www.airloft.org/api/getSentimentTextMulti?text='
-      + searchText)
-      .then((response) => response.json())
-      .then((responseJSON) => {
-        var sentiment = responseJSON.results[0].sentiment
-        this.setState({
-          sentiment: sentiment
-        });
-        var firstSenti = sentiment[0].split("/")[0];
-        _this.handleGifFetch(firstSenti, _this);
-      })
-      .catch((error) => {
-        console.warn(error);
+    if(searchText){
+      var _this = this;
+      this.setState({
+        isStart: true,
+        searchText: searchText
       });
+      fetch('http://www.airloft.org/api/getSentimentTextMulti?text='
+        + searchText)
+        .then((response) => response.json())
+        .then((responseJSON) => {
+          var sentiment = responseJSON.results[0].sentiment;
+          _this.handleEmojiFetch(searchText, _this);
+          this.setState({
+            sentiment: sentiment
+          });
+          var firstSenti = sentiment[0].split("/")[0];
+          _this.handleGifFetch(firstSenti, _this);
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+    }
+    else{
+      this.setState({notice: "No sentence typed in so far~"});
+    }
   };
+
+  /**
+   * return the top two emoji for searchText.
+   */
+  handleEmojiFetch(text, _this){
+    var url = "http://emoji.getdango.com/api/emoji?q=" + text;
+    fetch(url)
+    .then((emojiresponse) => emojiresponse.json())
+    .then(function(emojiresponseJSON){
+      console.log("top emoji", emojiresponseJSON.results[0].text);
+      _this.setState({
+        emojis: emojiresponseJSON.results[0].text + emojiresponseJSON.results[1].text
+      });
+    })
+  }
 
   /**
    * _this: points to current component(Day2Sentiment).
@@ -83,7 +105,7 @@ class Day2Sentiment extends Component {
     var {height, width} = Dimensions.get('window');
     var content = null;
     if (this.state.sentiment !== null) {
-      content = <Forecast mainText={this.state.sentiment} />;
+      content = <Forecast mainText={this.state.sentiment + this.state.emojis} />;
     }
     return (
       <View style={styles.container}>
@@ -144,9 +166,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 50
   },
+  emojis: {
+    flex: 1
+  },
   notice: {
     flex: 1,
-    marginBottom: -40
+    marginBottom: 0
   },
   noticeText: {
     flex: 1,
