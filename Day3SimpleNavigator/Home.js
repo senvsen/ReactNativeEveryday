@@ -5,11 +5,16 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
+const Booklist = require('./Booklist');
 
 class Home extends Component {
 
   _handleListBook() {
     console.log("pressed!");
+    this.props.navigator.push({
+      title: 'Book Shelf',
+      component: Booklist
+    })
   };
 
   render() {
@@ -18,7 +23,7 @@ class Home extends Component {
         <View style={styles.topBlock} />
         <View style={styles.bottomBlock}>
           <TouchableHighlight style={styles.button}
-          onPress={this._handleListBook}
+          onPress={this._handleListBook.bind(this)}
           underlayColor="#99d9f4">
             <Text style={styles.buttonText}>
               List books
