@@ -5,7 +5,7 @@ import {
   View
 } from 'react-native';
 
-class Booklist extends Component {
+class Post extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = Booklist;
+module.exports = Post;

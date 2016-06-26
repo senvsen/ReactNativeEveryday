@@ -5,7 +5,7 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
-const Booklist = require('./Booklist');
+const Post = require('./Post');
 
 class Home extends Component {
 
@@ -13,7 +13,7 @@ class Home extends Component {
     console.log("pressed!");
     this.props.navigator.push({
       title: 'Book Shelf',
-      component: Booklist
+      component: Post
     })
   };
 
