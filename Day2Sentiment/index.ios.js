@@ -66,7 +66,6 @@ class Day2Sentiment extends Component {
     fetch(url)
     .then((emojiresponse) => emojiresponse.json())
     .then(function(emojiresponseJSON){
-      console.log("top emoji", emojiresponseJSON.results[0].text);
       _this.setState({
         emojis: emojiresponseJSON.results[0].text + emojiresponseJSON.results[1].text
       });

@@ -3,60 +3,105 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  ListView,
+  Image
 } from 'react-native';
-const Post = require('./Post');
+const Postcell = require('./Postcell');
+const blogdata = require('./data.json');
 
 class Home extends Component {
 
-  _handleListBook() {
-    console.log("pressed!");
-    this.props.navigator.push({
-      title: 'Book Shelf',
-      component: Post
-    })
+  constructor(props) {
+    super(props);
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+    // this.state = {
+    //   dataSource: ds.cloneWithRows([])
+    // };
+    // var url = "http://rss2json.com/api.json?rss_url=http%3A%2F%2Fchocoluffy.com%2Fatom.xml";
+    // fetch(url).then((response) => response.json())
+    // .then((responseJSON) => {
+    //   this.setState({
+    //     dataSource: responseJSON.items
+    //   })
+    // })
+    this.state = {
+      dataSource: ds.cloneWithRows(blogdata.items)
+    };
   };
+
+  // _handleListBook() {
+  //   console.log("pressed!");
+  //   this.props.navigator.push({
+  //     title: 'Book Shelf',
+  //     component: Postcell
+  //   })
+  // };
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.topBlock} />
-        <View style={styles.bottomBlock}>
-          <TouchableHighlight style={styles.button}
-          onPress={this._handleListBook.bind(this)}
-          underlayColor="#99d9f4">
-            <Text style={styles.buttonText}>
-              List books
-            </Text>
-          </TouchableHighlight>
-        </View>
-      </View>
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={this._renderRow}
+      />
+
+      // <View style={styles.container}>
+      //   <View style={styles.topBlock} />
+      //   <View style={styles.bottomBlock}>
+      //     <TouchableHighlight style={styles.button}
+      //     onPress={this._handleListBook.bind(this)}
+      //     underlayColor="#99d9f4">
+      //       <Text style={styles.buttonText}>
+      //         List books
+      //       </Text>
+      //     </TouchableHighlight>
+      //   </View>
+      // </View>
     );
   }
+
+  _renderRow(rowData: string){
+    return (
+      // <Postcell>
+      // {rowData.title}
+      // </Postcell>
+      <TouchableHighlight style={styles.cellContainer}>
+        <View style={styles.contentContainer}>
+          <Image style={styles.profileImg} source={{uri: 'http://ww1.sinaimg.cn/large/72f96cbagw1f52lv09lzgj211o0vstda'}} />
+          <View style={styles.rightCol}>
+            <Text>
+              {rowData.title}
+            </Text>
+          </View>
+        </View>
+      </TouchableHighlight>
+    )
+  }
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  topBlock: {
-    flex: 2
-  },
-  bottomBlock: {
-    flex: 1
-  },
-  button: {
+  cellContainer: {
     flex: 1,
-    backgroundColor: '#48BBEC',
-    borderRadius: 8,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
+    height: 40
+  },
+  contentContainer: {
+    flex: 1,
+    flexDirection: 'row',
     margin: 10
   },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-    alignSelf: 'center'
+  profileImg: {
+    flex: 1,
+    width: 20,
+    height: 20
+  },
+  rightCol: {
+    flex: 3,
+    flexDirection: 'column'
   }
 });
 

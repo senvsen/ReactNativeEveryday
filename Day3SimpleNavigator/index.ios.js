@@ -22,7 +22,7 @@ class Day3SimpleNavigator extends Component {
         titleTextColor='#FFF'
         style={styles.navigator}
         initialRoute={{
-          title: 'Mission Wall',
+          title: 'My blog',
           component: Home
         }}
       />
