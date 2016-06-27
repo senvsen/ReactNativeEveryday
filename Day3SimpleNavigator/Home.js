@@ -68,7 +68,7 @@ class Home extends Component {
       // </Postcell>
       <TouchableHighlight style={styles.cellContainer}>
         <View style={styles.contentContainer}>
-          <Image style={styles.profileImg} source={{uri: 'http://ww1.sinaimg.cn/large/72f96cbagw1f52lv09lzgj211o0vstda'}} />
+          <Image style={styles.profileImg} source={{uri: 'http://ww1.sinaimg.cn/large/72f96cbagw1f52lv09lzgj211o0vstda'}}></Image>
           <View style={styles.rightCol}>
             <Text>
               {rowData.title}
@@ -82,26 +82,23 @@ class Home extends Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   cellContainer: {
-    flex: 1,
-    height: 40
+    flex: 1
   },
   contentContainer: {
     flex: 1,
     flexDirection: 'row',
-    margin: 10
+    height: 60,
   },
   profileImg: {
     flex: 1,
-    width: 20,
-    height: 20
+    height: 15,
+    width: 15
   },
   rightCol: {
     flex: 3,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    justifyContent: 'center'
   }
 });
 
