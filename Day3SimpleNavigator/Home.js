@@ -68,7 +68,9 @@ class Home extends Component {
       // </Postcell>
       <TouchableHighlight style={styles.cellContainer}>
         <View style={styles.contentContainer}>
-          <Image style={styles.profileImg} source={{uri: 'http://ww1.sinaimg.cn/large/72f96cbagw1f52lv09lzgj211o0vstda'}}></Image>
+          <View style={styles.profileContainer}>
+            <Image style={styles.profileImg} source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}></Image>
+          </View>
           <View style={styles.rightCol}>
             <Text>
               {rowData.title}
@@ -90,15 +92,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 60,
   },
-  profileImg: {
+  profileContainer: {
     flex: 1,
-    height: 15,
-    width: 15
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profileImg: {
+    height: 50,
+    width: 50
   },
   rightCol: {
-    flex: 3,
+    flex: 4,
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'flex-start',
+    padding: 10
   }
 });
 
