@@ -61,14 +61,19 @@ class Home extends Component {
       //   </View>
       // </View>
     );
-  }
+  };
 
-  _renderRow(rowData: string){
+  // how to render a customer component.
+  _renderRow(rowData){
+
+    var _cellTapped = function(post){
+        console.log("pressed!", post.title);
+    };
+
     return (
-      // <Postcell>
-      // {rowData.title}
-      // </Postcell>
-      <TouchableHighlight style={styles.cellContainer}>
+      <TouchableHighlight
+        underlayColor = '#ddd'
+        onPress={ () => _cellTapped(rowData)}>
         <View style={styles.contentContainer}>
           <View style={styles.profileContainer}>
             <Image style={styles.profileImg} source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}></Image>
@@ -92,9 +97,6 @@ class Home extends Component {
 
 
 const styles = StyleSheet.create({
-  cellContainer: {
-    flex: 1
-  },
   contentContainer: {
     flex: 1,
     flexDirection: 'row',
