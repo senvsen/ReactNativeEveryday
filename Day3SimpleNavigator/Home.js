@@ -7,6 +7,8 @@ import {
   ListView,
   Image
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 const Postcell = require('./Postcell');
 const blogdata = require('./data.json');
 
@@ -79,6 +81,9 @@ class Home extends Component {
               {rowData.author}
             </Text>
           </View>
+          <View style={styles.favBtn}>
+            <Icon name="heart" size={20} color="#CFCFCF" />
+          </View>
         </View>
       </TouchableHighlight>
     )
@@ -114,6 +119,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: "#ACACAC",
     fontSize: 13
+  },
+  favBtn: {
+    flex: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 
