@@ -6,16 +6,40 @@ import {
   TouchableHighlight,
   Image
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Postcell extends Component {
+
+  _cellTapped(post) {
+      console.log("pressed!", post.title);
+      this.props.navigator.push({
+        title: '正文',
+        component: PostDetailed,
+        leftButtonTitle: 'Back',
+        passProps: {content: post.content}
+      })
+  };
+
   render() {
     return (
-      <TouchableHighlight style={styles.container}>
-        <Image style={styles.profileImg} source={{uri: 'http://ww1.sinaimg.cn/large/72f96cbagw1f52lv09lzgj211o0vstda'}} />
-        <View style={styles.rightCol}>
-          <Text>
-          'interesting!'
-          </Text>
+      <TouchableHighlight
+        underlayColor = '#ddd'
+        onPress={() => this._cellTapped(this.props.data)}>
+        <View style={styles.row}>
+          <View style={styles.profileContainer}>
+            <Image style={styles.profileImg} source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}></Image>
+          </View>
+          <View style={styles.rightCol}>
+            <Text>
+              {this.props.data.title}
+            </Text>
+            <Text style={styles.postAuthor}>
+              {this.props.data.author}
+            </Text>
+          </View>
+          <View style={styles.favBtn}>
+            <Icon name="heart" size={20} color="#CFCFCF" />
+          </View>
         </View>
       </TouchableHighlight>
     );
@@ -23,20 +47,35 @@ class Postcell extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  row: {
     flex: 1,
     flexDirection: 'row',
-    height: 40
+    height: 60,
+  },
+  profileContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   profileImg: {
-    flex: 1,
-    margin: 5,
-    width: null,
-    height: null
+    height: 50,
+    width: 50
   },
   rightCol: {
-    flex: 3,
-    flexDirection: 'column'
+    flex: 4,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    padding: 10
+  },
+  postAuthor: {
+    marginTop: 10,
+    color: "#ACACAC",
+    fontSize: 13
+  },
+  favBtn: {
+    flex: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

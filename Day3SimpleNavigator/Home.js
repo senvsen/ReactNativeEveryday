@@ -7,9 +7,9 @@ import {
   ListView,
   Image
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Postcell = require('./Postcell');
+const PostDetailed = require('./PostDetailed');
 const blogdata = require('./data.json');
 
 class Home extends Component {
@@ -65,68 +65,13 @@ class Home extends Component {
 
   // how to render a customer component.
   _renderRow(rowData){
-
-    var _cellTapped = function(post){
-        console.log("pressed!", post.title);
-    };
-
     return (
-      <TouchableHighlight
-        underlayColor = '#ddd'
-        onPress={ () => _cellTapped(rowData)}>
-        <View style={styles.contentContainer}>
-          <View style={styles.profileContainer}>
-            <Image style={styles.profileImg} source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}></Image>
-          </View>
-          <View style={styles.rightCol}>
-            <Text>
-              {rowData.title}
-            </Text>
-            <Text style={styles.postAuthor}>
-              {rowData.author}
-            </Text>
-          </View>
-          <View style={styles.favBtn}>
-            <Icon name="heart" size={20} color="#CFCFCF" />
-          </View>
-        </View>
-      </TouchableHighlight>
+      <Postcell data={rowData} />
     )
   }
 }
 
 
-const styles = StyleSheet.create({
-  contentContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 60,
-  },
-  profileContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  profileImg: {
-    height: 50,
-    width: 50
-  },
-  rightCol: {
-    flex: 4,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    padding: 10
-  },
-  postAuthor: {
-    marginTop: 10,
-    color: "#ACACAC",
-    fontSize: 13
-  },
-  favBtn: {
-    flex: 0.5,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
+const styles = StyleSheet.create({});
 
 module.exports = Home;
