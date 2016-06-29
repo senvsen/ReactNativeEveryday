@@ -13,6 +13,10 @@ Sometimes the third-party libraries not fully integrated into the project even d
 
 Apply `flex: 1, justifyContent: 'center', alignItems: 'center'` styling on image's parent element, then for that image's styling, only specify its fixed height and width will work!
 
+### TouchableHighlight
+
+TouchableHighlight component can only has one child element, thus if we want to have multiple children elements, wrap them into a single view container.
+
 ## Data
 
 ### Grab data from RSS
