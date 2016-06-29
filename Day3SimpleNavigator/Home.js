@@ -75,6 +75,9 @@ class Home extends Component {
             <Text>
               {rowData.title}
             </Text>
+            <Text style={styles.postAuthor}>
+              {rowData.author}
+            </Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -106,6 +109,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     padding: 10
+  },
+  postAuthor: {
+    marginTop: 10,
+    color: "#ACACAC",
+    fontSize: 13
   }
 });
 
