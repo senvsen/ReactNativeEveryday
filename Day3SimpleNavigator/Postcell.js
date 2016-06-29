@@ -12,7 +12,7 @@ class Postcell extends Component {
 
   _cellTapped(post) {
       console.log("pressed!", post.title);
-      this.props.navigator.push({
+      this.props.nav.push({
         title: '正文',
         component: PostDetailed,
         leftButtonTitle: 'Back',
