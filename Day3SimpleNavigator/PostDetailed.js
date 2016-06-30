@@ -25,7 +25,7 @@ class PostDetailed extends Component {
 const styles = StyleSheet.create({
   webview: {
     flex: 1,
-    margin: 10
+    marginTop: 50
   }
 });
 

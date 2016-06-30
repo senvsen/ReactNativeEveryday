@@ -26,7 +26,7 @@ class Day3SimpleNavigator extends Component {
       <Navigator
         style={styles.navigator}
         initialRoute={{
-          name: 'Home',
+          navTitle: 'Home',
           component: Home
         }}
         renderScene={ this.renderScene }
