@@ -17,6 +17,41 @@ Apply `flex: 1, justifyContent: 'center', alignItems: 'center'` styling on image
 
 TouchableHighlight component can only has one child element, thus if we want to have multiple children elements, wrap them into a single view container.
 
+### Navigator
+
+Finally using Navigator instead of NavigatorIOS, there are several important things to remember:
+
+- we have an `renderScene` method in index.ios.js that defines what component to render when there is an scene being pushed.
+```javascript
+// In parent component, we define renderScene method:
+renderScene(route, navigator) {
+   if(route.name == 'Main') {
+     return <Main navigator={navigator} {...route.passProps} />
+   }
+   if(route.name == 'Home') {
+     return <Home navigator={navigator} {...route.passProps} />
+   }
+},
+
+// And in child component, we put all data we want to pass to next scene in route object.
+_navigate(property){
+  this.props.navigator.push({
+    name: 'Home',
+    passProps: {
+      name: property
+    }
+  })
+}
+
+<TouchableHighlight onPress={ () => this._navigate('Hello World') }>
+    <Text>GO To View</Text>
+</TouchableHighlight>
+```
+And utilizing the spread syntax of passing properties, we can easily allow next scene to use the data passed from the previous scene, the one being trigger(ususally by pressing).
+
+- The problem of "this". In the above example, we use the ES6 arrow syntax, which automatically bind "this" for us, which means that the "this" inside the function we called points to the current component. However, if we use common function assignment like `onPress={this.onPress.bind(this)}`, we have to manually bind this to it!!! 
+
+
 ## Data
 
 ### Grab data from RSS
