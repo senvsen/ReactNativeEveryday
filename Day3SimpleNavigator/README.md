@@ -51,6 +51,8 @@ And utilizing the spread syntax of passing properties, we can easily allow next 
 
 - The problem of "this". In the above example, we use the ES6 arrow syntax, which automatically bind "this" for us, which means that the "this" inside the function we called points to the current component. However, if we use common function assignment like `onPress={this.onPress.bind(this)}`, we have to manually bind this to it!!!
 
+check [this post](https://medium.com/@dabit3/react-native-navigator-navigating-like-a-pro-in-react-native-3cb1b6dc1e30#.1kuxzxyps) for more information.
+
 ### Test on real device
 
 - Change from localhost to my computer's IP.
