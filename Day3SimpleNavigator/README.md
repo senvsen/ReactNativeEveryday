@@ -49,7 +49,12 @@ _navigate(property){
 ```
 And utilizing the spread syntax of passing properties, we can easily allow next scene to use the data passed from the previous scene, the one being trigger(ususally by pressing).
 
-- The problem of "this". In the above example, we use the ES6 arrow syntax, which automatically bind "this" for us, which means that the "this" inside the function we called points to the current component. However, if we use common function assignment like `onPress={this.onPress.bind(this)}`, we have to manually bind this to it!!! 
+- The problem of "this". In the above example, we use the ES6 arrow syntax, which automatically bind "this" for us, which means that the "this" inside the function we called points to the current component. However, if we use common function assignment like `onPress={this.onPress.bind(this)}`, we have to manually bind this to it!!!
+
+### Test on real device
+
+- Change from localhost to my computer's IP.
+- [Add on e more key to info.plist](https://gist.github.com/andrewsardone/91797ff9923b9ac6ea64)
 
 
 ## Data
