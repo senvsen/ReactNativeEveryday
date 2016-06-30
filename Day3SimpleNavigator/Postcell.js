@@ -10,13 +10,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Postcell extends Component {
 
-  _cellTapped(post) {
-      console.log("pressed!", post.title);
-      this.props.nav.push({
-        title: '正文',
-        component: PostDetailed,
-        leftButtonTitle: 'Back',
-        passProps: {content: post.content}
+  _cellTapped() {
+      console.log("pressed!", this.props.data.title);
+      this.props.navigator.push({ // All these properties will be a property of route.
+        name: 'Article',
+        passProps: {content: this.props.data.content}
       })
   };
 
@@ -24,7 +22,7 @@ class Postcell extends Component {
     return (
       <TouchableHighlight
         underlayColor = '#ddd'
-        onPress={() => this._cellTapped(this.props.data)}>
+        onPress={ this._cellTapped.bind(this) }>
         <View style={styles.row}>
           <View style={styles.profileContainer}>
             <Image style={styles.profileImg} source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}></Image>

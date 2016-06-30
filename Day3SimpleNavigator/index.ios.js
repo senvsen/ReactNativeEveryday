@@ -10,21 +10,30 @@ import {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS
+  Navigator
 } from 'react-native';
 const Home = require('./Home');
+const PostDetailed = require('./PostDetailed');
 
 class Day3SimpleNavigator extends Component {
+
+  renderScene(route, navigator) {
+    if(route.name == 'Main'){
+      return <Home navigator={navigator} />
+    }
+    if(route.name == 'Article') {
+      return <PostDetailed navigator={navigator} {...route.passProps} />
+    }
+  };
+
   render() {
     return (
-      <NavigatorIOS
-        barTintColor='#48BBEC'
-        titleTextColor='#FFF'
+      <Navigator
         style={styles.navigator}
         initialRoute={{
-          title: 'My blog',
-          component: Home
+          name: 'Main',
         }}
+        renderScene={ this.renderScene }
       />
     );
   }
@@ -38,7 +47,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   navigator: {
-    flex: 1
+    flex: 1,
+    margin: 20
   },
 });
 

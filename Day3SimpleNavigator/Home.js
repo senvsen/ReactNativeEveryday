@@ -26,7 +26,7 @@ class Home extends Component {
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={this._renderRow}
+        renderRow={this._renderRow.bind(this)}
       />
     );
   };
@@ -34,7 +34,7 @@ class Home extends Component {
   // TODO: how to pass this.props.navigator to each row component.
   _renderRow(rowData){
     return (
-      <Postcell data={rowData} />
+      <Postcell data={rowData} navigator={this.props.navigator}/>
     )
   }
 }
