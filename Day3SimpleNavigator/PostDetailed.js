@@ -11,13 +11,17 @@ import {
  * Template for each detailed article, use react-native-htmltext to render inline html markup.
  */
 class PostDetailed extends Component {
+  _filterImgFromHTML(content) {
+
+  };
+
   render() {
     return (
       <WebView
       ref={'webview'}
       automaticallyAdjustContentInsets={false}
       style={styles.webview}
-      source={{html: this.props.content}} />
+      source={{uri: this.props.link}} />
     );
   }
 }

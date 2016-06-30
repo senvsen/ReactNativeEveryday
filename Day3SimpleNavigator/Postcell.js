@@ -15,7 +15,10 @@ class Postcell extends Component {
       console.log("pressed!", this.props.data.title);
       this.props.navigator.push({ // All these properties will be a property of route.
         component: PostDetailed,
-        passProps: {content: this.props.data.content},
+        passProps: {
+          content: this.props.data.content,
+          link: this.props.data.link
+        },
         navTitle: this.props.data.title
       })
   };
