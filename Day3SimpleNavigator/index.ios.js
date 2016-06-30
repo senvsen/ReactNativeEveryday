@@ -13,17 +13,11 @@ import {
   Navigator
 } from 'react-native';
 const Home = require('./Home');
-const PostDetailed = require('./PostDetailed');
 
 class Day3SimpleNavigator extends Component {
 
   renderScene(route, navigator) {
-    if(route.name == 'Main'){
-      return <Home navigator={navigator} />
-    }
-    if(route.name == 'Article') {
-      return <PostDetailed navigator={navigator} {...route.passProps} />
-    }
+    return < route.component {...route.passProps} navigator={navigator} />
   };
 
   render() {
@@ -31,7 +25,8 @@ class Day3SimpleNavigator extends Component {
       <Navigator
         style={styles.navigator}
         initialRoute={{
-          name: 'Main',
+          name: 'Home',
+          component: Home
         }}
         renderScene={ this.renderScene }
       />

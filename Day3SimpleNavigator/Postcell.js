@@ -7,13 +7,14 @@ import {
   Image
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+const PostDetailed = require('./PostDetailed');
 
 class Postcell extends Component {
 
   _cellTapped() {
       console.log("pressed!", this.props.data.title);
       this.props.navigator.push({ // All these properties will be a property of route.
-        name: 'Article',
+        component: PostDetailed,
         passProps: {content: this.props.data.content}
       })
   };
