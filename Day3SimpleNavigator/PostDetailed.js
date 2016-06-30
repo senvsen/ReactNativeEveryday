@@ -17,7 +17,7 @@ class PostDetailed extends Component {
       ref={'webview'}
       automaticallyAdjustContentInsets={false}
       style={styles.webview}
-      source={this.props.content} />
+      source={{html: this.props.content}} />
     );
   }
 }
