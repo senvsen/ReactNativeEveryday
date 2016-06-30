@@ -27,6 +27,7 @@ class Home extends Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={this._renderRow.bind(this)}
+        style={styles.listview}
       />
     );
   };
@@ -40,6 +41,10 @@ class Home extends Component {
 }
 
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  listview: {
+    marginTop: 50
+  }
+});
 
 module.exports = Home;
