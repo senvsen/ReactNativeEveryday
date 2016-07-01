@@ -53,6 +53,10 @@ And utilizing the spread syntax of passing properties, we can easily allow next 
 
 check [this post](https://medium.com/@dabit3/react-native-navigator-navigating-like-a-pro-in-react-native-3cb1b6dc1e30#.1kuxzxyps) for more information. And refer to the source code of example [navigator example](https://rnplay.org/apps/9_1QSA).
 
+### TabBarIOS
+
+Check [this post](https://devdactic.com/react-native-tab-bar/) for more helpful information. 
+
 ### Test on real device
 
 - Change from localhost to my computer's IP.
