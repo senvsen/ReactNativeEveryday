@@ -55,13 +55,42 @@ check [this post](https://medium.com/@dabit3/react-native-navigator-navigating-l
 
 ### TabBarIOS
 
-Check [this post](https://devdactic.com/react-native-tab-bar/) for more helpful information. 
+Check [this post](https://devdactic.com/react-native-tab-bar/) for more helpful information.
+
+```javascript
+render() {
+    return (
+      <TabBarIOS selectedTab={this.state.selectedTab}>
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'welcome'}
+          systemIcon="featured"
+          onPress={() => {
+              this.setState({
+                  selectedTab: 'welcome',
+              });
+          }}>
+            <Welcome/>
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'more'}
+          systemIcon="featured"
+          onPress={() => {
+                this.setState({
+                    selectedTab: 'more',
+                });
+          }}>
+          <More/>
+        </TabBarIOS.Item>
+      </TabBarIOS>
+    );
+  }
+
+```
 
 ### Test on real device
 
 - Change from localhost to my computer's IP.
-- [Add on e more key to info.plist](https://gist.github.com/andrewsardone/91797ff9923b9ac6ea64)
-
+- [Add one more key to info.plist](https://gist.github.com/andrewsardone/91797ff9923b9ac6ea64)
 
 ## Data
 
