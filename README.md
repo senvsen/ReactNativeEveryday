@@ -1,5 +1,5 @@
 ## Demo
 
-![Day2 Sentiment Analysis](http://ww2.sinaimg.cn/large/006tNbRwgw1f56wfd2v8qg30dc0no7wz)
+![Day2 Sentiment Analysis](https://github.com/chocoluffy/ReactNativeEveryday/blob/master/images/Jun-24-2016%2014-49-54.gif)
 
-![Day3 Simple Blog Client](http://ww4.sinaimg.cn/large/c5ee78b5gw1f5h54wb0ung20dc0ob4qu.gif)
+![Day3 Simple Blog Client](https://github.com/chocoluffy/ReactNativeEveryday/blob/master/images/react-native-simpleNavigator.gif)
