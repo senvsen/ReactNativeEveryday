@@ -33,6 +33,7 @@ class PostDetailed extends Component {
     }).start();
   };
 
+  //TODO: add interactionManager to have progressBar opacity be 0 after reaching full width with a satisfying delay.
   _onLoadEnd(){
     this.setState({
       progressValue: width

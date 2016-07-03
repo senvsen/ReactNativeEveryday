@@ -43,7 +43,7 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
   listview: {
-    marginTop: 50
+    marginTop: 35
   }
 });
 
