@@ -32,7 +32,6 @@ class Home extends Component {
     );
   };
 
-  // TODO: how to pass this.props.navigator to each row component.
   _renderRow(rowData){
     return (
       <Postcell data={rowData} navigator={this.props.navigator}/>

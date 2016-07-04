@@ -37,7 +37,8 @@ class PostDetailed extends Component {
   _onLoadEnd(){
     this.setState({
       progressValue: width
-    })
+    });
+    setTimeout(() => {this.setState({progressOpacity: 0})}, 1);
   }
 
   render() {

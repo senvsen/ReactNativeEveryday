@@ -86,6 +86,9 @@ render() {
   }
 
 ```
+### ProgressBar
+
+Using `Animated.View` to display progressBar, pay attention to the fading-away effect of progressBar, if we choose to use `setTimeout(() => {this.setState({progressOpacity: 0})}, 2);`, use the arrow syntax instead of function syntax, since `this` in function refers to window instead of component itself.
 
 ### Test on real device
 
